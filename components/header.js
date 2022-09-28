@@ -4,8 +4,6 @@ const Header = ({props}) => {
 
   const [theme, setTheme] = useState('');
 
-  const [search, setSearch] = useState('');
-
   const switchTheme = () => {
     if (theme === 'light') {
       setTheme('dark')

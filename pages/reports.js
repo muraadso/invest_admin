@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Layout from "../components/layout";
-import {getFirestore, collection, getDocs, query, onSnapshot, orderBy, deleteDoc, doc} from "firebase/firestore";
-import Link from "next/link";
-import Image from "next/image";
+import {getFirestore, collection, query, onSnapshot} from "firebase/firestore";
 import Loading from "../components/loading";
 import CreateTransaction from "../components/transactions/create";
 import TransactionsTable from "../components/transactions/datatable";

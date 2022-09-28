@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Layout from "../components/layout";
 import Stats from "../components/dashboard/stats";
 import LatestTransactions from "../components/dashboard/transactions";
@@ -17,10 +17,5 @@ const Dashboard = () => {
     </Layout>
   );
 };
-
-
-
-
-
 
 export default Dashboard;

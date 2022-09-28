@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {collection, getFirestore, onSnapshot, query} from "firebase/firestore";
-import Loading from "../loading";
 import TransactionsTable from "../transactions/datatable";
 
 const LatestTransactions = () => {
