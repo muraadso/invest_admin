@@ -2,6 +2,7 @@ import {Dialog, Transition} from '@headlessui/react'
 import {Fragment, useEffect, useState} from 'react'
 import {collection, getDocs, getFirestore, query, addDoc} from "firebase/firestore";
 import Loading from "../loading";
+import {FormOutlined} from "@ant-design/icons";
 
 export default function CreateTransaction() {
   let [isOpen, setIsOpen] = useState(false)
@@ -63,9 +64,9 @@ export default function CreateTransaction() {
     <>
       <button
         onClick={openModal}
-        className='flex items-center shadow h-9 ml-2 px-4 rounded-md bg-red-500 hover:bg-red-600 text-white flex'>
-        <span className='bx bx-dollar-circle text-lg mr-2'/>
-        <span>Record Transactions</span>
+        className='flex items-center shadow h-10 ml-2 px-4 rounded-md bg-red-500 hover:bg-red-600 text-white flex'>
+        <FormOutlined className='bx bx-dollar-circle mr-2'/>
+        <p>New Record</p>
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>
@@ -117,7 +118,7 @@ export default function CreateTransaction() {
                           })}
                           className='px-3 py-1.5 border border-gray-300 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white outline-none'>
                           <option>--Select Portfolio--</option>
-                          {portfolios.map(item => <option key={item.id} value={JSON.stringify(item)}>{item.name}</option>)}
+                          {portfolios.map(item => <option key={item.id} value={JSON.stringify(item)}>{item.id}</option>)}
                         </select>
                       </div>
 

@@ -47,7 +47,7 @@ const Investors = () => {
       getDocs(q).then(snapshots => {
         const list = []
         snapshots.forEach((doc) => {
-          list.push({id: doc.id, ...doc.data()})
+          list.push({...doc.data()})
         });
         setInvestors(list)
         setLoading(false)
@@ -70,7 +70,7 @@ const Investors = () => {
       <Layout props={{title: 'Investors', icon: 'bx-group'}}>
         <div className='w-full h-full flex flex-col justify-center items-center'>
           <div className='text-4xl'>
-            😢
+            🧐
           </div>
           <span className='my-4 text-gray-600 dark:text-gray-300 text-lg'>No Investors Yet!</span>
           <Link href='/investors/create'
@@ -125,14 +125,13 @@ const Investors = () => {
               <thead className='sticky top-0 z-10 border border-gray-300 dark:border-transparent'>
               <tr
                 className="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-sm leading-normal">
+                <th className="py-3 px-6 text-center">ID</th>
                 <th className="py-3 px-6 text-center">Photo</th>
                 <th className="py-3 px-6 text-left">Full Name</th>
                 <th className="py-3 px-6 text-left">Phone Number</th>
                 <th className="py-3 px-6 text-center">Amount</th>
                 <th className="py-3 px-6 text-center">Duration</th>
                 <th className="py-3 px-6 text-center">City</th>
-                <th className="py-3 px-6 text-center">Address</th>
-                <th className="py-3 px-6 text-center">Work</th>
                 <th className="py-3 px-6 text-center">Actions</th>
               </tr>
               </thead>
@@ -141,7 +140,10 @@ const Investors = () => {
                 return (
                   <tr
                     key={item.id}
-                    className={`border border-gray-300 dark:border-gray-500 ${index % 2 === 0 ? 'bg-white dark:bg-transparent' : 'bg-transparent'} hover:bg-gray-100 dark:hover:bg-gray-500 cursor-pointer`}>
+                    className={`border border-gray-300 dark:border-gray-500 ${index % 2 !== 0 ? 'bg-white dark:bg-transparent' : 'bg-transparent'} hover:bg-gray-100 dark:hover:bg-gray-500 cursor-pointer`}>
+                    <td className="py-3 px-6 text-left">
+                      <span className='font-medium'>{item.id}</span>
+                    </td>
                     <td className="py-3 px-6 text-center">
                       <div className="flex items-center justify-center">
                         <Image
@@ -170,30 +172,21 @@ const Investors = () => {
                       <span className='font-medium'>{item.city}</span>
                     </td>
                     <td className="py-3 px-6 text-center">
-                      <span className='font-medium'>{item.address}</span>
-                    </td>
-                    <td className="py-3 px-6 text-center">
-                      <span className='font-medium'>{item.work}</span>
-                    </td>
-                    <td className="py-3 px-6 text-center">
                       <div className="flex item-center justify-center">
+                        <div onClick={() => window.location.href = '/investors/profile?q=' + item.id}>
+                          <i className='bx bx-show text-xl transform hover:text-purple-500 hover:scale-110' />
+                        </div>
                         <div
                           onClick={() => {
                             window.location.href = '/investors/create?edit=' + item.id
                           }}
-                          className="w-4 mr-4 transform hover:text-purple-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
-                          </svg>
+                          className="mx-4 transform hover:text-purple-500 hover:scale-110">
+                          <i className='bx bx-edit text-lg transform hover:text-purple-500 hover:scale-110' />
                         </div>
                         <div
                           onClick={() => deleteInvestor(item)}
-                          className="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
-                          </svg>
+                          className="mr-2 transform hover:text-purple-500 hover:scale-110">
+                          <i className='bx bx-trash text-lg transform hover:text-purple-500 hover:scale-110' />
                         </div>
                       </div>
                     </td>

@@ -1,13 +1,15 @@
 import React from 'react';
 import {useRouter} from "next/router";
+import {AppstoreAddOutlined, TeamOutlined, DollarCircleOutlined, ExceptionOutlined, LogoutOutlined} from "@ant-design/icons";
 
 const Sidebar = () => {
 
   const items = [
-    {icon: 'bx-category', path: '/dashboard', label: 'Dashboard'},
-    {icon: 'bx-group', path: '/investors', label: 'Investors'},
-    {icon: 'bxs-report', path: '/reports', label: 'Reports'},
-    {icon: 'bx-log-in-circle', path: '/logout', label: 'Logout'},
+    {icon: <AppstoreAddOutlined style={{ fontSize: '20px'}}/>, path: '/dashboard', label: 'Dashboard'},
+    {icon: <TeamOutlined style={{ fontSize: '20px'}}/>, path: '/investors', label: 'Investors'},
+    {icon: <DollarCircleOutlined style={{ fontSize: '20px'}} />, path: '/transactions', label: 'Transactions'},
+    {icon: <ExceptionOutlined style={{ fontSize: '20px'}} />, path: '/reports', label: 'Reports'},
+    {icon: <LogoutOutlined style={{ fontSize: '20px'}} />, path: '/logout', label: 'Logout'},
   ]
 
   const {pathname} = useRouter()
@@ -25,9 +27,10 @@ const Sidebar = () => {
             const isActive = pathname.includes(item.path)
             return (
               <li key={item.path}
-                  className={`w-full my-3 py-1 px-5 font-semibold ${isActive ? 'text-red-500 dark:text-white bg-white dark:bg-transparent border-2 border-red-500 dark:border-white rounded-lg shadow cursor-pointer' : 'text-gray-500 dark:text-gray-300 hover:text-red-500'}`}>
-                <a href={item.path} className='w-full h-full flex space-x-4'>
-                  <i className={`bx ${item.icon} text-2xl hover:text-white`}/>
+                  className={`w-full my-3 py-1 px-4 font-semibold ${isActive ? 'text-red-500 dark:text-white bg-white dark:bg-transparent border-2 border-red-500 dark:border-white rounded-lg shadow cursor-pointer' : 'text-gray-500 dark:text-gray-300 hover:text-red-500'}`}>
+                <a href={item.path} className='w-full h-full flex items-center space-x-4'>
+                  {/*<i className={`bx ${item.icon} text-2xl hover:text-white`}/>*/}
+                  {item.icon}
                   <p className='text-lg'>{item.label}</p>
                 </a>
               </li>

@@ -34,7 +34,7 @@ const Stats = () => {
         className='flex items-end px-6 pb-4 bg-white shadow-sm dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg'>
         <div className="flex-1 flex flex-col">
           <h1 className='mb-2 text-2xl text-black dark:text-white font-black'>{stats.investors}</h1>
-          <h1 className='text-base text-gray-500 dark:text-gray-200'>All Portfolios</h1>
+          <h1 className='text-base text-gray-500 dark:text-gray-200'>All Investors</h1>
         </div>
         <i className='bx bxs-group text-black dark:text-white text-4xl'/>
       </div>
